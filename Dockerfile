@@ -7,6 +7,16 @@ RUN apt-get update && \
 
 RUN pip install shadowsocks==2.8.2
 
+ENV SERVER_ADDR 0.0.0.0
+ENV SERVER_PORT 8388
+ENV PASSWORD 111111111
+ENV METHOD aes-256-cfb
+ENV TIMEOUT 3600
+ENV DNS_ADDR 8.8.8.8
+
+EXPOSE $SERVER_PORT/tcp
+EXPOSE $SERVER_PORT/udp
+
 RUN git clone https://github.com/snooda/net-speeder.git net-speeder
 WORKDIR net-speeder
 RUN sh build.sh
